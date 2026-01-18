@@ -9,6 +9,7 @@ publish/
 .vscode/
 *.user
 *.suo
+CLAUDE.md
 
 # Node.js
 node_modules/

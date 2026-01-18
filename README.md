@@ -1,26 +1,21 @@
 <p align="center">
-  <img src="icon.png" width="128" height="128" alt="Steam P2P Info Icon">
+  <img src="assets/icon.png" width="128" height="128" alt="Steam P2P Info Icon">
 </p>
 
-<h1 align="center">Steam P2P Info Modern</h1>
+<h1 align="center">SteamP2PInfo</h1>
 
 <p align="center">
-  基于 <a href="https://github.com/tremwil/SteamP2PInfo">tremwil/SteamP2PInfo</a> 的现代化重构版本
+  基于 <a href="https://github.com/tremwil/SteamP2PInfo">tremwil/SteamP2PInfo</a> 重构，使用现代化技术栈重写了界面
 </p>
 
 <p align="center">
-  <img src="screenshot.png" alt="Preview">
+  <img src="assets/screenshot.png" alt="Preview">
 </p>
-
-## ✨ 新特性
-
-- 🎨 **现代化界面** - 使用 React + Tailwind CSS 打造的精美 UI
 
 ## 🛠️ 技术栈
 
 - **后端**: .NET 8 + WPF + WebView2
 - **前端**: React 18 + TypeScript + Tailwind CSS
-- **构建**: Vite
 
 ## 📋 系统要求
 
@@ -39,11 +34,8 @@
 ### 从源码构建
 
 ```powershell
-# 1. 克隆仓库
-git clone https://github.com/ZEERDEER/SteamP2PInfo-Modern.git
-cd SteamP2PInfo-Modern
-
-# 2. 运行构建脚本（需要管理员权限）
+git clone https://github.com/ZEERDEER/SteamP2PInfo.git
+cd SteamP2PInfo
 .\build.ps1
 ```
 
@@ -51,9 +43,10 @@ cd SteamP2PInfo-Modern
 
 ## 🎮 支持的游戏
 
-理论上支持所有使用 Steam P2P 网络的游戏，包括但不限于：
+支持所有使用 Steam P2P 网络的游戏，包括：
 
-- ELDEN RING（艾尔登法环）
+- ELDEN RING
+- DARK SOULS III
 - 其他使用 Steamworks P2P 的游戏
 
 ## ⚙️ 配置说明
@@ -65,26 +58,10 @@ cd SteamP2PInfo-Modern
 | 记录活动日志 | 保存玩家连接/断开记录 |
 | 新会话提示音 | 有新玩家加入时播放声音 |
 
-## 📁 配置文件位置（便携模式）
-
-配置文件存储在程序所在目录：
-
-```
-SteamP2PInfo/
-├── config/
-│   ├── settings.json      # 全局设置
-│   └── games/
-│       ├── eldenring.json # 游戏特定配置
-│       └── DarkSoulsIII.json
-├── logs/                  # 活动日志
-└── cache/                 # WebView2 缓存
-```
-
 ## 🙏 致谢
 
-- [tremwil](https://github.com/tremwil) - 原版 SteamP2PInfo 作者
+- [tremwil/SteamP2PInfo](https://github.com/tremwil/SteamP2PInfo) - 原版作者
 - [Steamworks.NET](https://github.com/rlabrecque/Steamworks.NET)
-- [MahApps.Metro](https://github.com/MahApps/MahApps.Metro) - 原版 UI 框架
 
 ## 📄 许可证
 

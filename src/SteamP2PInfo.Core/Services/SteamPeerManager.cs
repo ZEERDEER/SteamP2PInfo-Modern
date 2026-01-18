@@ -453,26 +453,34 @@ public static class SteamPeerManager
         {
             if (SteamNetworking.GetP2PSessionState(peer.SteamId, out var session) && IsSessionStateOK(session))
             {
-                bool endpointChanged = !peer.SessionState.HasValue || 
-                    peer.SessionState.Value.m_nRemoteIP != session.m_nRemoteIP || 
-                    peer.SessionState.Value.m_nRemotePort != session.m_nRemotePort;
-                
-                peer.SessionState = session;
-                
-                if (endpointChanged)
-                {
-                    ETWPingMonitor.Unregister(peer.NetIdentity);
-                    // 修复字节序：Steam的m_nRemoteIP是网络字节序，需要反转以匹配ETW事件中的IP格式
-                    byte[] ipBytes = BitConverter.GetBytes(session.m_nRemoteIP).Reverse().ToArray();
-                    peer.NetIdentity = ((ulong)session.m_nRemotePort << 32) | BitConverter.ToUInt32(ipBytes, 0);
-                    ETWPingMonitor.Register(peer.NetIdentity);
-                    Log($"[TryOldApi] Registered NetIdentity: {peer.NetIdentity:X16} for peer {peer.SteamId.m_SteamID}");
-                }
+                UpdateOldApiEndpoint(peer, session);
                 return true;
             }
         }
         catch (Exception ex) { Log($"[TryOldApi] Exception: {ex.Message}"); }
         return false;
+    }
+
+    /// <summary>
+    /// 更新旧 API 的端点信息，处理 IP/端口变化时的 ETW 监控注册
+    /// </summary>
+    private static void UpdateOldApiEndpoint(PeerInfo peer, P2PSessionState_t session)
+    {
+        bool endpointChanged = !peer.SessionState.HasValue ||
+            peer.SessionState.Value.m_nRemoteIP != session.m_nRemoteIP ||
+            peer.SessionState.Value.m_nRemotePort != session.m_nRemotePort;
+
+        peer.SessionState = session;
+
+        if (endpointChanged)
+        {
+            ETWPingMonitor.Unregister(peer.NetIdentity);
+            // 修复字节序：Steam的m_nRemoteIP是网络字节序，需要反转以匹配ETW事件中的IP格式
+            byte[] ipBytes = BitConverter.GetBytes(session.m_nRemoteIP).Reverse().ToArray();
+            peer.NetIdentity = ((ulong)session.m_nRemotePort << 32) | BitConverter.ToUInt32(ipBytes, 0);
+            ETWPingMonitor.Register(peer.NetIdentity);
+            Log($"[UpdateOldApiEndpoint] Registered NetIdentity: {peer.NetIdentity:X16} for peer {peer.SteamId.m_SteamID}");
+        }
     }
     
     /// <summary>
@@ -490,20 +498,7 @@ public static class SteamPeerManager
             if (peer.IsNewApi) return TryNewApi(peer);
             if (SteamNetworking.GetP2PSessionState(peer.SteamId, out var session) && IsSessionStateOK(session))
             {
-                bool endpointChanged = !peer.SessionState.HasValue || 
-                    peer.SessionState.Value.m_nRemoteIP != session.m_nRemoteIP || 
-                    peer.SessionState.Value.m_nRemotePort != session.m_nRemotePort;
-                
-                peer.SessionState = session;
-                
-                if (endpointChanged)
-                {
-                    ETWPingMonitor.Unregister(peer.NetIdentity);
-                    // 修复字节序：Steam的m_nRemoteIP是网络字节序，需要反转以匹配ETW事件中的IP格式
-                    byte[] ipBytes = BitConverter.GetBytes(session.m_nRemoteIP).Reverse().ToArray();
-                    peer.NetIdentity = ((ulong)session.m_nRemotePort << 32) | BitConverter.ToUInt32(ipBytes, 0);
-                    ETWPingMonitor.Register(peer.NetIdentity);
-                }
+                UpdateOldApiEndpoint(peer, session);
                 return true;
             }
         }
