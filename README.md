@@ -15,9 +15,6 @@
 ## ✨ 新特性
 
 - 🎨 **现代化界面** - 使用 React + Tailwind CSS 打造的精美 UI
-- 🌙 **深色主题** - 暖橙色调，游戏感十足
-- 💨 **流畅动画** - 玻璃态效果、平滑过渡
-- 📦 **单文件分发** - 打包为单个 exe 文件
 
 ## 🛠️ 技术栈
 
@@ -29,7 +26,6 @@
 
 - Windows 10 1903+ 或 Windows 11
 - Steam 客户端
-- **管理员权限**（用于 ETW 网络监控）
 
 ## 🚀 快速开始
 
@@ -58,8 +54,6 @@ cd SteamP2PInfo-Modern
 理论上支持所有使用 Steam P2P 网络的游戏，包括但不限于：
 
 - ELDEN RING（艾尔登法环）
-- Dark Souls III（黑暗之魂3）
-- Dark Souls Remastered
 - 其他使用 Steamworks P2P 的游戏
 
 ## ⚙️ 配置说明
