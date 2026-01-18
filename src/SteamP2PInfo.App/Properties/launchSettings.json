@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SteamP2PInfo.App": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\zeer\\Desktop\\SteamP2PInfo-Modern"
+    }
+  }
+}

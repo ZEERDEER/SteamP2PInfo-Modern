@@ -1,0 +1,25 @@
+# Build outputs
+publish/
+**/bin/
+**/obj/
+**/wwwroot/
+
+# IDE
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Runtime data
+cache/
+config/
+logs/
+*.log
+
+# Temp files
+*.tmp
+nul

@@ -1,0 +1,78 @@
+<Window x:Class="SteamP2PInfo.App.OverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:SteamP2PInfo.App"
+        WindowStyle="None"
+        Topmost="True"
+        ShowInTaskbar="False"
+        AllowsTransparency="True"
+        SizeToContent="WidthAndHeight"
+        ShowActivated="False"
+        Background="Transparent"
+        Title="SteamP2PInfo Overlay"
+        Loaded="Window_Loaded"
+        Closed="Window_Closed"
+        MouseDown="Window_MouseDown"
+        MouseUp="Window_MouseUp">
+    
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+    </Window.Resources>
+    
+    <StackPanel x:Name="mainPanel" HorizontalAlignment="Left">
+        <!-- Header Banner -->
+        <local:OverlayTextBlock x:Name="headerText" 
+                                Text="Steam P2P Info" 
+                                Margin="5,0"
+                                Fill="White"
+                                Stroke="Black"
+                                StrokeThickness="2"
+                                FontFamily="Segoe UI"
+                                FontSize="16"
+                                FontWeight="Bold"/>
+        
+        <!-- Peer List -->
+        <ItemsControl x:Name="peerList">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <!-- Player Name -->
+                        <local:OverlayTextBlock Text="{Binding Name}" 
+                                                Margin="5,0"
+                                                Fill="{Binding TextBrush}"
+                                                Stroke="{Binding StrokeBrush}"
+                                                StrokeThickness="{Binding StrokeWidth}"
+                                                FontFamily="{Binding FontFamilyObj}"
+                                                FontSize="{Binding FontSize}"/>
+                        <!-- Steam ID (optional) -->
+                        <local:OverlayTextBlock Text="{Binding SteamIdDisplay}" 
+                                                Margin="5,0"
+                                                Fill="LightGray"
+                                                Stroke="{Binding StrokeBrush}"
+                                                StrokeThickness="{Binding StrokeWidth}"
+                                                FontFamily="{Binding FontFamilyObj}"
+                                                FontSize="{Binding FontSize}"
+                                                Visibility="{Binding ShowSteamId, Converter={StaticResource BoolToVisibility}}"/>
+                        <!-- Ping -->
+                        <local:OverlayTextBlock Text="{Binding PingDisplay}" 
+                                                Margin="5,0"
+                                                Fill="{Binding PingBrush}"
+                                                Stroke="{Binding StrokeBrush}"
+                                                StrokeThickness="{Binding StrokeWidth}"
+                                                FontFamily="{Binding FontFamilyObj}"
+                                                FontSize="{Binding FontSize}"/>
+                        <!-- Connection Quality (optional) -->
+                        <local:OverlayTextBlock Text="{Binding QualityDisplay}" 
+                                                Margin="5,0"
+                                                Fill="{Binding TextBrush}"
+                                                Stroke="{Binding StrokeBrush}"
+                                                StrokeThickness="{Binding StrokeWidth}"
+                                                FontFamily="{Binding FontFamilyObj}"
+                                                FontSize="{Binding FontSize}"
+                                                Visibility="{Binding ShowQuality, Converter={StaticResource BoolToVisibility}}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</Window>
