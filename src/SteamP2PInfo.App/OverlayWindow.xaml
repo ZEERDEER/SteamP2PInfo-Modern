@@ -22,7 +22,7 @@
     <StackPanel x:Name="mainPanel" HorizontalAlignment="Left">
         <!-- Header Banner -->
         <local:OverlayTextBlock x:Name="headerText" 
-                                Text="Steam P2P Info Modern" 
+                                Text="Steam P2P Info" 
                                 Margin="5,0"
                                 Fill="White"
                                 Stroke="Black"

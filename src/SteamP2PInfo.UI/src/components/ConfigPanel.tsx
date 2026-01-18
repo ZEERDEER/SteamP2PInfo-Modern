@@ -457,7 +457,7 @@ export function ConfigPanel({ config, appConfig, onUpdate, onUpdateAppConfig, on
                 description="支持 {time:HH:mm:ss}"
                 value={config.overlay.bannerFormat}
                 onChange={(value) => onUpdate({ overlay: { ...config.overlay, bannerFormat: value } })}
-                placeholder="[{time:HH:mm:ss}] Steam P2P Info Modern"
+                placeholder="[{time:HH:mm:ss}] Steam P2P Info"
               />
               
               {/* 字体选择器 */}

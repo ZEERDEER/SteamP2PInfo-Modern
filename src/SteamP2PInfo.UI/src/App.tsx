@@ -104,7 +104,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="text-center text-gray-600 text-sm">
-        Steam P2P Info Modern · Original by tremwil · Redesigned by zeer
+        Steam P2P Info · Original by tremwil · Redesigned by zeer
       </footer>
 
       {/* Window Selector Modal */}
