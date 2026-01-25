@@ -365,7 +365,7 @@ public partial class OverlayWindow : Window
             Peers.Add(new OverlayPeerViewModel
             {
                 Name = peer.Name,
-                SteamId = peer.SteamId,
+                SteamId = peer.SteamId64,
                 Ping = peer.Ping,
                 ConnectionQuality = peer.ConnectionQuality,
                 ShowSteamId = config.ShowSteamId,

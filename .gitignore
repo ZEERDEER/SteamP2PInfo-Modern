@@ -9,7 +9,13 @@ publish/
 .vscode/
 *.user
 *.suo
+
+# AI config (not for repo)
 CLAUDE.md
+AGENTS.md
+
+# Legacy reference code (too large for repo)
+Source code/
 
 # Node.js
 node_modules/

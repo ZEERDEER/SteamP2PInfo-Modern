@@ -63,7 +63,7 @@ function getMockData(type: string): unknown {
         steamAppId: 1245620,
         peers: [
           { steamId: '76561198012345678', name: 'SunBro_420', ping: 45, connectionQuality: 0.95, isOldAPI: false, connectionType: 'SteamNetworkingSockets', pingColor: '#7CFC00' },
-          { steamId: '76561198087654321', name: 'DarkMoon_Knight', ping: 120, connectionQuality: 0.78, isOldAPI: false, connectionType: 'SteamNetworkingSockets', pingColor: '#FFFF00' },
+          { steamId: '76561198087654321', name: 'DarkMoon_Knight', ping: 75, connectionQuality: 0.78, isOldAPI: false, connectionType: 'SteamNetworkingSockets', pingColor: '#00BFFF' },
           { steamId: '76561198011111111', name: 'Patches_The_Hyena', ping: 230, connectionQuality: 0.45, isOldAPI: true, connectionType: 'SteamNetworking', pingColor: '#CD5C5C' },
         ],
         lastUpdate: new Date().toISOString(),

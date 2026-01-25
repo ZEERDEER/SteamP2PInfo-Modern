@@ -253,7 +253,7 @@ public partial class MainWindow : Window
             gameName = _attachedWindow.Title,
             processName = _attachedWindow.ProcessName,
             steamAppId = GameConfig.Current?.SteamAppId ?? 0,
-            peers = peers.Select(p => new { steamId = p.SteamId.ToString(), name = p.Name, ping = p.Ping, connectionQuality = p.ConnectionQuality, isOldAPI = p.IsOldAPI, connectionType = p.ConnectionType, pingColor = p.PingColor }).ToList(),
+            peers = peers.Select(p => new { steamId = p.SteamId64.ToString(), name = p.Name, ping = p.Ping, connectionQuality = p.ConnectionQuality, connectionType = p.ConnectionType, pingColor = ConvertToWebColor(p.PingColor) }).ToList(),
             lastUpdate = DateTime.UtcNow.ToString("O")
         };
     }
@@ -471,6 +471,14 @@ public partial class MainWindow : Window
             return null;
         }
         catch { return null; }
+    }
+    
+    private static string ConvertToWebColor(string color)
+    {
+        if (string.IsNullOrEmpty(color)) return "#FFFFFF";
+        if (color.Length == 9 && color.StartsWith("#"))
+            return "#" + color.Substring(3);
+        return color;
     }
     
     private List<string> GetSystemFonts()
